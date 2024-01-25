@@ -1,0 +1,42 @@
+* {  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+  background: white;
+  background-color: white;
+
+
+}
+
+html::-webkit-scrollbar {
+  width: 0rem;
+
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: .5rem;
+
+}
+i{
+  cursor: pointer;
+}
+button{
+  cursor: pointer;
+}

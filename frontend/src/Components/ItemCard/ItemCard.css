@@ -1,0 +1,73 @@
+.itemcard{
+    width: 25rem;
+    height: 40rem;
+    border-radius: 1rem;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: .2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between */
+    position: relative;
+    overflow: hidden;
+    transition: .2s ease-in;
+    
+}
+.offer{
+    position: absolute;
+    background-color: #15803d;
+    padding: 1rem;
+    font-size: 1.3rem;
+    color: white;
+    transition: .2s ease-in;
+}
+.card-img{
+    width: 100%;
+    height: 80%;
+    transition: .2s ease-in;
+    overflow: hidden;
+}
+.item-card-img{
+    width: 100%;
+    height: 100%;
+    transition: .2s ease-in;
+}
+
+.itemcard:hover{
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    transform: translateY(-0.8rem);
+}
+.itemcard:hover .offer{
+    border-radius: 0;
+}
+/* .itemcard:hover .item-card-img{
+    transform: scale(1.1);
+} */
+.product-detail{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding:0rem 2rem ;
+    font-size: 1.5rem;
+}
+.product-name{
+    color: black;
+}
+.price{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.offerprice{
+    
+    color: black;
+}
+.mrp{
+    color: gray;
+    text-decoration: line-through;
+}

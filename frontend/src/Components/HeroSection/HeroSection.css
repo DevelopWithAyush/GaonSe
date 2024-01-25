@@ -1,0 +1,7 @@
+
+.banner{
+    width: 100%;
+    display: flex;
+    object-fit: fill;
+    margin-top: 10rem;
+}
