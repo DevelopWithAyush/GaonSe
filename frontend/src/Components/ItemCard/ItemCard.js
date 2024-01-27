@@ -1,25 +1,27 @@
 import React from 'react'
 import "./ItemCard.css"
 import { Link } from 'react-router-dom'
-import cardimg from "../../Assets/5964.png"
+// import cardimg from "../../Assets/5964.png"
 
-const ItemCard = () => {
+const ItemCard = (props) => {
+  const {product} = props;
+  const discountper = (((product.mrp -product.discountPrice)/product.mrp)*100).toFixed(1);
   return (
-    <Link  className='itemcard' >
-      <p className='offer'>50%</p>
+    <Link   className='itemcard' to={`/singleproduct/${product._id}`}>
+      {discountper > 0.0?<p className='offer'>{discountper}%</p>:<></>}
       <div className='card-img'>
-      <img src={cardimg} className='item-card-img' alt="" />
+      <img src={product.imgUrls[0]} className='item-card-img' alt="" />
 
       </div>
       <div className="product-detail">
-        <p className='product-name'>this is product</p>
+        <p className='product-name'>{product.productName}</p>
+        <p className='review'>⭐⭐⭐⭐ 120 review</p>
         <div className="price">
-          <p className='offerprice'>&#8377; 99.00</p>
-          <p className='mrp'>&#8377;
-
- 199.00</p>
+          <p className='offerprice'>&#8377; {product.discountPrice}</p>
+          <p className='mrp'>&#8377;{product.mrp} </p>
 
         </div>
+        <button className="item-add-cart-btn" onClick={()=>{console.log("button click")}}>add to cart</button>
       </div>
       
     </Link>

@@ -1,9 +1,9 @@
 import React from 'react'
-
+import "./PageNotFound.css"
 const PageNotFound = () => {
   return (
-    <div>
-      ;dfa
+    <div className='pagenotfound'>
+      page not found
     </div>
   )
 }

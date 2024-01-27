@@ -32,8 +32,7 @@ export default function HeroSection() {
         }}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper fordesktop"
-        dotColor="#000"
-        activeDotColor="red"
+    
       >
         <SwiperSlide><img src={banner1} alt="" className='banner'/></SwiperSlide>
         <SwiperSlide><img src={banner2} alt="" className='banner'/></SwiperSlide>

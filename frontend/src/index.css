@@ -5,7 +5,7 @@
   border: none;
   text-decoration: none;
   text-transform: capitalize;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 html {
@@ -20,7 +20,7 @@ html {
 }
 
 html::-webkit-scrollbar {
-  width: 0rem;
+  width: .5rem;
 
 }
 
@@ -30,8 +30,8 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: .5rem;
+  background: #292929;
+  border-radius: 1rem;
 
 }
 i{
@@ -39,4 +39,28 @@ i{
 }
 button{
   cursor: pointer;
+}
+input{
+  text-transform: none;
+}
+
+@media(max-width:1024px){
+  html{
+    font-size: 57.5%;
+}
+}
+@media(max-width:768px){
+  html{
+    font-size: 53.5%;
+}
+}
+@media(max-width:425px){
+  html{
+    font-size: 45.5%;
+}
+}
+@media(max-width:375px){
+  html{
+    font-size: 42.5%;
+}
 }

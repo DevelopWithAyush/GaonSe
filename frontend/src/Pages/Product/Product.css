@@ -11,7 +11,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 7rem 0% ;
+    padding: 4rem 0% ;
     font-size: 2rem;
 }
 .product-right-section{
@@ -26,9 +26,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     padding: 0rem 5%;
-    gap: 3rem;
+    gap: 2rem;
 }
 .sortbtn{
     width: 20rem;
@@ -72,3 +72,37 @@
     background-color: transparent;
     padding: 1rem 0rem;
 }
+.navigation-link{
+    color: gray;
+    font-weight: 500;
+    transition: .2s ease-in;
+}
+.navigation-link:hover{
+    color: black;
+}
+
+@media (max-width:768px){
+    .product-left-section{
+        display: none;
+    }
+    .product-right-section{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .productbox{
+      
+        gap: 2rem;
+    }
+}
+@media(max-width:430px){
+    .productbox{
+        gap: 1rem;   
+    }
+  }
+  @media(max-width:360px){
+    .productbox{
+        gap: 2rem;   
+    }
+  }

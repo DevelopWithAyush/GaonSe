@@ -4,14 +4,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    padding: 4rem 5%;
     margin: 5rem 0rem;
 }
 .middleleft{
     width: 40%;
     height: 60vh;
     overflow: hidden;
-    border-radius: 3rem 0rem 0rem 3rem;
+    /* border-radius: 3rem 0rem 0rem 3rem; */
     
 }
 .middleleftimg{
@@ -24,29 +23,34 @@
     height: 60vh;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     background-color: #fdf9ed;
-    border-radius: 0rem 3rem 3rem 0rem;
+    /* border-radius: 0rem 3rem 3rem 0rem; */
     padding: 5rem ;
     gap: 3rem;
 }
 .banner-heading{
     font-size: 5rem;
+    font-weight: 700;
+    background: -webkit-linear-gradient(#A35028, #FF6700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .banner-context{
+    /* width: 80%; */
     font-size: 1.5rem;
     color: gray;
+    font-weight: 400;
 }
 .banner-logo{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
 }
 .banner-logo-card{
-    height: 7rem;
+    height: 5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -56,9 +60,14 @@
 .banner-logo-card img{
     height: 100%;
 }
-.banner-logo-card p{
+
+.banner-logo-text{
+    display: flex;
+    flex-direction: column;
+}
+.banner-logo-text p{
     color: #794024;
-    font-weight: 400;
+    font-weight: 500;
 }
 .context-link{
     text-decoration: none;
@@ -72,7 +81,7 @@
 .fa-arrow-right{
     padding-left: 1rem;
 }
-@media (max-width:1200px){
+@media (max-width:1228px){
     .middlebanner{
         width: 100vw;
         display: flex;
@@ -82,7 +91,6 @@
     .middleleft{
         width: 100%;
         overflow: hidden;
-        border-radius: 3rem 3rem 0rem 0rem;
     }
     .middleleftimg{
         width: auto;
@@ -90,17 +98,16 @@
     }
     .middleright{
         width: 100%;
-    
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: #fdf9ed;
-        border-radius: 0rem 0rem 3rem 3rem;
-        padding: 5rem ;
+        padding: 5rem 4% ;
         gap: 3rem;
     }
     .banner-heading{
-        font-size: 5rem;
+        font-size: 4rem;
     }
     .banner-context{
         font-size: 1.5rem;
@@ -111,18 +118,23 @@
         flex-direction: row;
         align-items: center;
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 5rem;
     }
     .banner-logo-card{
-        height: 5rem;
+        height: 7rem;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: .5rem;
-        font-size: 1.5rem;
+        gap:1rem;
+        font-size: 2rem;
     }
     .banner-logo-card img{
         height: 100%;
     }
 }
 
+@media (max-width:325px){
+    .banner-heading{
+        font-size: 3.5rem;
+    }
+}

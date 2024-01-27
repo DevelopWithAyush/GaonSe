@@ -12,27 +12,27 @@ const Middlebanner = () => {
           <img src={middleimg} alt="" className='middleleftimg' />
         </div>
         <div className="middleright">
-          <h2 className='banner-heading'>why gaonSe</h2>
+          <h2 className='banner-heading'>why gaonSe "Jaggery"</h2>
           <p className='banner-context'>In our busy lives, sometimes all we need is a simple, comforting sweetness. That's exactly what GaonSe Jaggery brings to the table not just a sweet treat but a warm hug from our village. Made with love and and care, it's a promise of pure goodness and tradition. Starting with the basics, GaonSe Jaggery is crafted from pure sugarcane juice...</p>
           <div className="banner-logo">
             <div className="banner-logo-card">
               <img src={cardimg1} alt="" />
-              <p>100% organic</p>
+              <div className='banner-logo-text'><p>100% </p><p>organic</p></div>
             </div>
             <div className="banner-logo-card">
               <img src={cardimg2} alt="" />
-              <p>chemical free</p>
+              <div className='banner-logo-text'><p>chemical</p><p>free</p></div>
             </div>
             <div className="banner-logo-card">
               <img src={cardimg3} alt="" />
-              <p>Energy boost</p>
+              <div className='banner-logo-text'><p>Energy</p><p> boost</p></div>
             </div>
             <div className="banner-logo-card">
               <img src={cardimg4} alt="" />
-              <p>FSSAI approved</p>
+              <div className='banner-logo-text'><p>FSSAI </p><p>approved</p></div>
             </div>
           </div>
-          <a href="https://medium.com/@gaonseindia/gaonse-jaggery-pure-love-genuinetaste-ec677e3d99b8" target='blank' className='context-link'> read more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="https://medium.com/@gaonseindia/gaonse-jaggery-pure-love-genuinetaste-ec677e3d99b8" target='blank' className='context-link'> read more <i className="fa-solid fa-arrow-right"></i></a>
         </div>
       
     </div>

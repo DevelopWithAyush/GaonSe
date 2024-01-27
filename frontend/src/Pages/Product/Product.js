@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext,useEffect} from 'react'
 import "./Product.css"
 import ItemCard from '../../Components/ItemCard/ItemCard'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { ProductContext } from '../../Context/ProductContext/ProductState'
 
 const Product = () => {
+  const context = useContext(ProductContext)
+  const {getProducts,product,lowtohigh,hightolow} = context;
+  useEffect(()=>{
+getProducts()
+// eslint-disable-next-line
+  },[])
 
   const location = useLocation()
   const [dropdown,SetDropdown] = useState({display:"none"})
@@ -18,27 +25,23 @@ const Product = () => {
   return (
     <div className='productsection' onClick={handleopensort}>
       <div className="productcontext">
-        <div className="product-left-section"> <p>home{location.pathname}</p></div>
+        <div className="product-left-section"> <Link className='navigation-link'>home</Link><Link to ="/product" className='navigation-link'>{location.pathname}</Link></div>
         <div className="product-right-section">
           <p className='no-of-item'>3 items</p>
           <div className='sortbtn' onClick={handleopensort}>
-            <button className='the-btn'><p>sort by </p><i class="fa-solid fa-angle-down"></i></button>
+            <button className='the-btn'><p>sort by </p><i className="fa-solid fa-angle-down"></i></button>
             <div className="dropdown" style={dropdown}>
-              <button onClick={handleopensort} >newest</button>
-              <button onClick={handleopensort} >price:low to high</button>
-              <button onClick={handleopensort} >price: high to low</button>
+              <button onClick={()=>{handleopensort();lowtohigh()} }>price:low to high</button>
+              <button onClick={()=>{handleopensort();hightolow()}} >price: high to low</button>
             </div>
           </div>
         </div>
       </div>
       
       <div className="productbox">
-        <ItemCard></ItemCard>
-        <ItemCard></ItemCard>
-        <ItemCard></ItemCard>
-        <ItemCard></ItemCard>
-        <ItemCard></ItemCard>
-        <ItemCard></ItemCard>
+        {product.map((product)=>{
+          return <ItemCard product = {product} key ={product._id} />
+        })}
        
       </div>
       

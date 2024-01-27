@@ -26,6 +26,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imgUrls: [{
+    type: String,
+    required: true,
+  }],
 });
 
 // Create a Product model based on the schema

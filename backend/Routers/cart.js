@@ -64,7 +64,7 @@ router.get('/:userId', async (req, res) => {
       }
   
       // Find the cart for the user
-      const cart = await Cart.findOne({ user: userId }).populate('products.product', 'productName mrp discountPrice stocks');
+      const cart = await Cart.findOne({ user: userId }).populate('products.product', 'productName mrp discountPrice stocks imgUrls');
   
       // If the cart doesn't exist, return an empty array
       if (!cart) {
