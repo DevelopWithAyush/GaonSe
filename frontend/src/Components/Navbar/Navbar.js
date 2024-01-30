@@ -56,7 +56,6 @@ if(firstthird.transform === "scaleX(1)"){
             <Link onClick={handlemenubtn} to="/product"  className={`navlink ${location.pathname === "/product"?"active":""}`}>Product</Link>
             <Link onClick={handlemenubtn} to="/about"  className={`navlink ${location.pathname === "/about"?"active":""}`}>about</Link>
             <Link onClick={handlemenubtn} to="/contact"  className={`navlink ${location.pathname === "/contact"?"active":""}`}>contact us</Link>
-          {/* <Link to="/loginsignup" className={`navsign navlink ${location.pathname === "loginsignup"?"active":""}`} >sign in </Link> */}
             </nav>
         </div>
         <div className="right">

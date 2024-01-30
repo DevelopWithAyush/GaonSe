@@ -30,9 +30,41 @@
 .sidelink:hover{
     color: black;
 }
+.slideshow{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4rem 1%; 
+
+}
+.custom-prev,.custom-next{
+    width: 4rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    color: gray;
+    cursor: pointer;
+    border-radius: 1rem;
+    font-size: 4rem;
+    margin: 0rem 1rem;
+    transition: .2s ease;
+}
+.custom-next:hover,.custom-prev:hover{
+    color: black;
+
+}
+
+.custom-prev.disabled,
+.custom-next.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .categorybox{
     width: 100%;
-    padding: 4rem 4%;
+    /* margin: 0rem 4%; */
+    padding: 4rem 0%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -105,6 +137,7 @@
 .categorycard:hover .catlink::before{
     transform: scaleX(1);
 } 
+
 
 @media(max-width:1024px){
     .categorycard{

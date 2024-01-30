@@ -10,8 +10,6 @@
     width: 40%;
     height: 60vh;
     overflow: hidden;
-    /* border-radius: 3rem 0rem 0rem 3rem; */
-    
 }
 .middleleftimg{
     width: 100%;
@@ -25,9 +23,8 @@
     flex-direction: column;
     justify-content: center;
     background-color: #fdf9ed;
-    /* border-radius: 0rem 3rem 3rem 0rem; */
     padding: 5rem ;
-    gap: 3rem;
+    gap: 6rem;
 }
 .banner-heading{
     font-size: 5rem;
@@ -37,7 +34,6 @@
     -webkit-text-fill-color: transparent;
 }
 .banner-context{
-    /* width: 80%; */
     font-size: 1.5rem;
     color: gray;
     font-weight: 400;

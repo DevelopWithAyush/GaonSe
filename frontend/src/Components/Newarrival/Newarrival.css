@@ -18,7 +18,7 @@
 }
 .newarrivalbox{
     width: 100%;
-    padding: 4rem 4%;
+    padding: 4rem 0rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,6 +27,10 @@
     gap: 2rem;   
 }
 
+.itembox{
+    width: 25rem;
+    height: 40rem;
+}
 
 
   @media(max-width:430px){

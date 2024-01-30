@@ -7,7 +7,7 @@ const ItemCard = (props) => {
   const {product} = props;
   const discountper = (((product.mrp -product.discountPrice)/product.mrp)*100).toFixed(1);
   return (
-    <Link   className='itemcard' to={`/singleproduct/${product._id}`}>
+    <Link className='itemcard' to={`/singleproduct/${product._id}`}>
       {discountper > 0.0?<p className='offer'>{discountper}%</p>:<></>}
       <div className='card-img'>
       <img src={product.imgUrls[0]} className='item-card-img' alt="" />

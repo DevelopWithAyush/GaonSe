@@ -31,6 +31,7 @@ export default function HeroSection() {
           clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
+        // breakpoints={}
         className="mySwiper fordesktop"
     
       >

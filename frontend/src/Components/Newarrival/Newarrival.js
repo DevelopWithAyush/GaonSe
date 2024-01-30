@@ -3,6 +3,15 @@ import "./Newarrival.css"
 import { Link } from 'react-router-dom'
 import Itemcard from "../ItemCard/ItemCard"
 import { ProductContext } from '../../Context/ProductContext/ProductState'
+
+// swiper 
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 const Newarrival = () => {
   const context = useContext(ProductContext);
   const {product} = context;
@@ -13,15 +22,24 @@ const Newarrival = () => {
       <h1>new arrivals</h1>
             <Link to="/product" className='sidelink' >view all</Link>
       </div>
-      <div className="newarrivalbox">
+      <div className="slideshow">
+      <div className="custom-prev fa-solid fa-angle-left"></div>
+      <Swiper
+        slidesPerView={"auto"}
+        spaceBetween={50}            
+        navigation ={{
+          nextEl: '.custom-next',
+          prevEl: '.custom-prev',
+          clickable:true,
+        }}
+        modules={[Autoplay, Pagination, Navigation]}
+       className="newarrivalbox">
       {product.map((product)=>{
-        return <Itemcard product = {product} key={product._id} ></Itemcard>
-      })}
-
-      
-       
+        return <SwiperSlide className='itembox'><Itemcard product = {product} key={product._id} ></Itemcard>
+     </SwiperSlide> })}
+      </Swiper>
+      <div className="custom-next fa-solid fa-angle-right"></div>
       </div>
-
     </div>
   )
 }

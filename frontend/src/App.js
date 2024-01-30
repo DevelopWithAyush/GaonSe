@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home/Home';
 import Product from './Pages/Product/Product';
-import Email from "./Components/Email/Email"
 import Footer from "./Components/Footer/Footer"
 import Contact from './Pages/Contact/Contact';
 import ProductState from './Context/ProductContext/ProductState';
@@ -13,7 +12,7 @@ import Alert from './Components/Alert/Alert';
 import AlertState from "./Context/AlertContext/AlertState";
 function App() {
   return (
-    <>
+    <div className='app'>
       <BrowserRouter>
       <AlertState>
       <ProductState>
@@ -22,17 +21,15 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/product' element={<Product />} />
-          <Route path='/contact' element={<Contact />} />
           <Route path='/singleproduct/:productId' element={<SIngleProduct />} />
-
+          <Route path='/contact' element={<Contact />}/>
           <Route path='*' element={<PageNotFound />} />
         </Routes>
-        <Email />
         <Footer />
         </ProductState>
         </AlertState>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

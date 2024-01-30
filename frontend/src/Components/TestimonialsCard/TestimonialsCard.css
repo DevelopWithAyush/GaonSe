@@ -1,0 +1,36 @@
+ .testimonials-card{
+  width: 45rem;
+    height: 30rem;
+    border-radius: 1rem;
+    border-radius: 24.152px;
+  padding: 4rem 4%;
+    background-color: #fdf9ed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+} 
+.testimonials-card-content{
+    font-size: 1.5rem ;
+    color: rgb(65, 65, 65);
+    line-height: 2rem;
+    /* word-spacing: 1rem; */
+}
+.testimonials-review{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.testimonials-name{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.testimonials-detail{
+    font-size: 1.5rem;
+    color: rgb(65, 65, 65);
+}
+@media (max-width:500px){
+    .testimonials-card{
+        width: 40rem;
+    }
+}

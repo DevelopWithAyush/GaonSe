@@ -1,0 +1,87 @@
+.blog-section{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+
+.blog-section::before {
+    content: "";
+    background: url("https://res.cloudinary.com/dpqsatnvt/image/upload/v1706616592/gaonse_back_t50wzj.png") no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 270vh;
+    z-index: -1;
+    opacity: 1;
+}
+.blog-section-head{
+    width: 100%;
+    padding: 4rem 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.blog-section-heading{
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.blog-section-card{
+    width: 100%;
+    padding: 4rem 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem; 
+}
+.email-section{
+    width: 100%;
+    position: absolute;
+    top: 240vh;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.email-heading{
+    font-size: 2.5rem ;
+    font-weight: 500;
+}
+
+.email-box{
+    width: 45rem;
+    height: 7rem;
+
+    position: relative;
+}
+
+.email-box input{
+    width: 100%;
+    height: 100%;
+    border: .1rem solid gray;
+    border-radius: 1rem;
+    padding: 0rem 5rem 0rem 2rem;
+    font-size: 2rem;
+}
+.email-box i{
+font-size: 3rem;
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: #794024;
+    transition: .2s ease-in;
+}
+.fa-arrow-right:hover{
+ right: 0%;
+
+}

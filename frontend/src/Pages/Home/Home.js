@@ -6,6 +6,8 @@ import Middlebanner from '../../Components/Middlebanner/Middlebanner';
 import Newarrival from '../../Components/Newarrival/Newarrival';
 import { ProductContext } from '../../Context/ProductContext/ProductState';
 import BannerTop from '../../Components/BannerTop/BannerTop';
+import BlogSection from '../../Components/BlogSection/BlogSection';
+import Testimonials from '../../Components/Testimonials/Testimonials';
 const Home = () => {
   
   const context = useContext(ProductContext)
@@ -23,6 +25,8 @@ getProducts()
   <BannerTop/>
   <Newarrival/>
   <Middlebanner/>
+  <BlogSection/>
+  <Testimonials/>
  
   </>
   )
