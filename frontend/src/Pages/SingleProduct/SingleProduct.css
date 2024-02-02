@@ -17,6 +17,7 @@
 
 .product-detials {
     width: 100%;
+    /* margin: 5rem 0rem; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;

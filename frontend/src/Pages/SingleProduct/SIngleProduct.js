@@ -3,12 +3,15 @@ import {Link,useParams  } from 'react-router-dom'
 import ImgCard from '../../Components/ImgCard/ImgCard'
 import "./SingleProduct.css"
 import { ProductContext } from '../../Context/ProductContext/ProductState'
+import ReviewModal from '../../Components/ReviewModal/ReviewModal'
+import { ReviewContext } from '../../Context/ReviewContext/ReviewState'
 
 const SIngleProduct = () => {
     const {productId} = useParams()
-
    const context = useContext(ProductContext)
     const {getsingleproduct,singleproduct} = context
+    const reviewcontext = useContext(ReviewContext)
+    const {setreviewapper,setreviebox,startfunction} = reviewcontext
     useEffect(()=>{
         getsingleproduct(productId)
 
@@ -18,7 +21,8 @@ const SIngleProduct = () => {
     // console.log(singleproduct)
     const [accordion,setAccordion] = useState({display:"flex"})
     const discountper = (((singleproduct.mrp -singleproduct.discountPrice)/singleproduct.mrp)*100).toFixed(1);
-
+    
+   
     return (
         <section className='single-product'>
             <p className="single-navigation navigation-link"><Link to="/"  className='navigation-link' >home</Link>/ <Link to="/product" className='navigation-link' >product</Link>/ <Link  className='navigation-link' to={`/singleproduct/${singleproduct._id}`}> {singleproduct.productName} </Link> </p>
@@ -50,7 +54,7 @@ const SIngleProduct = () => {
                         <div className="service-card">
                             <i class="fa-solid fa-truck"></i>
                             <div className="service-context">
-                                <p>100% secure payment</p>
+                                <p></p>
                                 <p>pay online securly</p>
                             </div>
                         </div>
@@ -66,9 +70,13 @@ const SIngleProduct = () => {
                         </div>
                         <p className='single-para' style={accordion}> {singleproduct.productDescription} </p>
                     </div>
-
+                <button onClick={()=>{setreviewapper({top:"0"})
+                                    setreviebox({top:"50%"})
+                                    startfunction()
+            }}>don't forget to give feedback to us😄</button>
                 </div>
             </div>
+            <ReviewModal  productId={productId}/>
 
         </section>
     )

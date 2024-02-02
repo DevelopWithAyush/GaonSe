@@ -10,12 +10,18 @@ import SIngleProduct from './Pages/SingleProduct/SIngleProduct';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Alert from './Components/Alert/Alert';
 import AlertState from "./Context/AlertContext/AlertState";
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import About from './Pages/About/About';
+import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions';
+import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
+import ReviewState from './Context/ReviewContext/ReviewState';
 function App() {
   return (
     <div className='app'>
       <BrowserRouter>
       <AlertState>
       <ProductState>
+        <ReviewState>
         <Navbar />
         <Alert/>
         <Routes>
@@ -23,9 +29,16 @@ function App() {
           <Route path='/product' element={<Product />} />
           <Route path='/singleproduct/:productId' element={<SIngleProduct />} />
           <Route path='/contact' element={<Contact />}/>
+          <Route path='/privacy-policy' element={<PrivacyPolicy />}/>
+          <Route path='/about' element={<About />}/>
+          <Route path='/termsandcondition' element={<TermsAndConditions />}/>
+          <Route path='/returnpolicy' element={<ReturnPolicy />}/>
+
           <Route path='*' element={<PageNotFound />} />
+
         </Routes>
         <Footer />
+        </ReviewState>
         </ProductState>
         </AlertState>
       </BrowserRouter>

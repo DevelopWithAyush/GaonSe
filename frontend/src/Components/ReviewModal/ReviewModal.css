@@ -1,0 +1,84 @@
+.review-wapper{
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 100;
+}
+.review-box{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60rem;
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 3rem;
+    background-color: white;
+    border-radius: 2rem;
+    -webkit-box-shadow: 0px 0px 69px 8px rgba(0, 0, 0, 0.48);
+    -moz-box-shadow: 0px 0px 69px 8px rgba(0, 0, 0, 0.48);
+    box-shadow: 0px 0px 69px 8px rgba(0, 0, 0, 0.48);
+    z-index: 100;
+    gap: 3rem;
+}
+.head{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 3rem ;
+    color: gray;
+}
+.head i{
+    transition: .3s ease-in;
+    
+}
+.head i:hover{
+    color: black;
+}
+.review-box p{
+    font-size:3rem ;
+    font-weight: 600;
+    color: #794024;
+}
+.star-box{
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 3rem;
+    background-color: rgba(83, 83, 83, 0.61);
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+}
+.commetbox{
+    width: 65%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+}
+.commetbox textarea{
+    width: 100%;
+    border:.1rem solid gray ;
+    width: 35rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.commetbox button{
+    padding: 1.5rem 4rem;
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    border-radius: 1rem;
+}

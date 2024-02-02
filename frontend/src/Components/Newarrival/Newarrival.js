@@ -35,7 +35,7 @@ const Newarrival = () => {
         modules={[Autoplay, Pagination, Navigation]}
        className="newarrivalbox">
       {product.map((product)=>{
-        return <SwiperSlide className='itembox'><Itemcard product = {product} key={product._id} ></Itemcard>
+        return <SwiperSlide className='itembox' key={product._id}><Itemcard product = {product} key={product._id} ></Itemcard>
      </SwiperSlide> })}
       </Swiper>
       <div className="custom-next fa-solid fa-angle-right"></div>

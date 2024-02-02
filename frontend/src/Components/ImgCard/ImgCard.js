@@ -13,6 +13,7 @@ const ImgCard = (props) => {
 
     return (
         <section className='img-card'>
+            
             <div className="img-card-left">
                 {imgUrls.map((img) => (
                     <div className="small-frame" key={img} onClick={() => handleImgClick(img)}>
@@ -22,7 +23,7 @@ const ImgCard = (props) => {
             </div>
             <div className="img-card-right">
                 <div className="large-frame">
-                    <img src={selectedImg} alt="SelectedImage" />
+                    <img src={!selectedImg?imgUrls[0]:selectedImg} alt="SelectedImage" />
                 </div>
             </div>
         </section>
