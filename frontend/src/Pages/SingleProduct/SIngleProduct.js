@@ -4,14 +4,12 @@ import ImgCard from '../../Components/ImgCard/ImgCard'
 import "./SingleProduct.css"
 import { ProductContext } from '../../Context/ProductContext/ProductState'
 import ReviewModal from '../../Components/ReviewModal/ReviewModal'
-import { ReviewContext } from '../../Context/ReviewContext/ReviewState'
 
 const SIngleProduct = () => {
     const {productId} = useParams()
+    const [rating ,setrating] = useState(0)
    const context = useContext(ProductContext)
     const {getsingleproduct,singleproduct} = context
-    const reviewcontext = useContext(ReviewContext)
-    const {setreviewapper,setreviebox,startfunction} = reviewcontext
     useEffect(()=>{
         getsingleproduct(productId)
 
@@ -22,7 +20,79 @@ const SIngleProduct = () => {
     const [accordion,setAccordion] = useState({display:"flex"})
     const discountper = (((singleproduct.mrp -singleproduct.discountPrice)/singleproduct.mrp)*100).toFixed(1);
     
-   
+    const [reviewapper ,setreviewapper] = useState({top:"-100%"})
+    const [reviebox ,setreviebox] = useState({top:"-100%"})
+
+    // all the code related to the page review page 
+    const [start1, setStar1] = useState({ color: "#e4e4e4 " })
+    const [start2, setStar2] = useState({ color: "#e4e4e4 " })
+    const [start3, setStar3] = useState({ color: "#e4e4e4 " })
+    const [start4, setStar4] = useState({ color: "#e4e4e4 " })
+    const [start5, setStar5] = useState({ color: "#e4e4e4 " })
+
+    const startclick1 = () => {
+        setStar1({ color: "#FFD700" })
+        setStar2({ color: "#e4e4e4" })
+        setStar3({ color: "#e4e4e4" })
+        setStar4({ color: "#e4e4e4" })
+        setStar5({ color: "#e4e4e4" })
+        setrating(1)
+    }
+    const startclick2 = () => {
+        setStar1({ color: "#FFD700" })
+        setStar2({ color: "#FFD700" })
+        setStar3({ color: "#e4e4e4" })
+        setStar4({ color: "#e4e4e4" })
+        setStar5({ color: "#e4e4e4" })
+        setrating(2)
+
+    }
+    const startclick3 = () => {
+        setStar1({ color: "#FFD700" })
+        setStar2({ color: "#FFD700" })
+        setStar3({ color: "#FFD700" })
+        setStar4({ color: "#e4e4e4" })
+        setStar5({ color: "#e4e4e4" })
+        setrating(3)
+
+    }
+    const startclick4 = () => {
+        setStar1({ color: "#FFD700" })
+        setStar2({ color: "#FFD700" })
+        setStar3({ color: "#FFD700" })
+        setStar4({ color: "#FFD700" })
+        setStar5({ color: "#e4e4e4" })
+        setrating(4)
+
+    }
+    const startclick5 = () => {
+        setStar1({ color: "#FFD700" })
+        setStar2({ color: "#FFD700" })
+        setStar3({ color: "#FFD700" })
+        setStar4({ color: "#FFD700" })
+        setStar5({ color: "#FFD700" })
+        setrating(5)
+
+    }
+
+
+
+    const startfunction =()=>{
+        if(rating ===1){
+            startclick1()
+        }else if(rating === 2){
+            startclick2()
+        }else if(rating === 3){
+            startclick3()
+        }else if(rating ===4){
+            startclick4()
+        }else if(rating ===5){
+            startclick5()
+        }
+    }
+
+
+
     return (
         <section className='single-product'>
             <p className="single-navigation navigation-link"><Link to="/"  className='navigation-link' >home</Link>/ <Link to="/product" className='navigation-link' >product</Link>/ <Link  className='navigation-link' to={`/singleproduct/${singleproduct._id}`}> {singleproduct.productName} </Link> </p>
@@ -76,7 +146,7 @@ const SIngleProduct = () => {
             }}>don't forget to give feedback to us😄</button>
                 </div>
             </div>
-            <ReviewModal  productId={productId}/>
+            <ReviewModal rating={rating} setrating={setrating} reviebox ={reviebox} setreviebox ={setreviebox} reviewwapper = {reviewapper} setreviewapper ={setreviewapper}  productId={productId} start1 = {start1} start2= {start2} start3= {start3} start4= {start4} start5= {start5} startclick1 ={startclick1} startclick2 ={startclick2} startclick3 ={startclick3} startclick4 ={startclick4} startclick5 ={startclick5}/>
 
         </section>
     )

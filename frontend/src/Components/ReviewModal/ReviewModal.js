@@ -1,27 +1,112 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./ReviewModal.css"
-import { ReviewContext } from '../../Context/ReviewContext/ReviewState'
-const ReviewModal = ({ productId}) => {
+import { AlertContext } from '../../Context/AlertContext/AlertState'
+const ReviewModal = ({ productId, reviebox, setreviebox, reviewwapper, setreviewapper,setrating ,rating,start1,start2,start3,start4,start5,startclick1,startclick2,startclick3,startclick4,startclick5 }) => {
+    const url = "http://localhost:5000/"
 
-    const reviewcontext = useContext(ReviewContext)
-    const{reviewapper,handleclose,reviebox,startclick1,startclick2,startclick3,startclick4,startclick5,start1,start2,start3,start4,start5,comments,setComments,fetchExistingReview,addAndUpdate} = reviewcontext
+    // review data 
+    const [existingReview, setExistingReview] = useState(null);
+    const [comments, setComments] = useState('');
 
+    const context = useContext(AlertContext)
+    const { showAlert } = context
 
-    useEffect(()=>{
-        fetchExistingReview(productId)
+  
 
-    },[productId])
-
-
-    const handleonsubmit =(e)=>{
-e.preventDefault()
-addAndUpdate(productId)
+    const handleclose = () => {
+        setreviewapper({ top: "-100%" })
+        setreviebox({ top: "-100%" })
     }
+        const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjViNDRkYTU2MGYwOTMzYjc5NzQzNDMwIn0sImlhdCI6MTcwNjcwNDE3NX0.kKMIQXSJsslL1L7LVndXkD7ywNL5ilCOQKbN9fs3ABY"
+
+    // here we start the api fetaching for review 
+
+
+     useEffect(() => {
+        // // review star 
+    
+
+        const fetchExistingReview = async () => {
+            try {
+                const response = await fetch(`${url}api/review/user-review/${productId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authToken': authToken
+                    },
+                })
+                const json = await response.json()
+                setExistingReview(json);
+                setrating(json.rating)
+                setComments(json.comments)
+
+            } catch (error) {
+                console.log("some internal server error")
+                setExistingReview(null);
+            }
+        }
+
+        fetchExistingReview();
+
+    }, [productId])
+
+    console.log(comments)
+    console.log(rating)
+   
+
+    const handleonsubmit = async (e) => {
+        e.preventDefault();
+        if (existingReview) {
+            try {
+                const response = await fetch(`${url}api/review/update-review/${productId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authToken': authToken
+                    },
+                    body: JSON.stringify({
+                        rating,
+                        comments
+                    })
+                });
+                const json = await response.json();
+                setExistingReview(json);
+                setrating(json.rating);
+                setComments(json.comments);
+                showAlert("true", "Review updated");
+                handleclose();
+            } catch (error) {
+                showAlert("false", "Review not updated");
+            }
+        } else {
+            try {
+                const response = await fetch(`${url}api/review/add-review`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authToken': authToken
+                    },
+                    body: JSON.stringify({
+                        product: productId,
+                        rating,
+                        comments
+                    })
+                });
+                const json = await response.json();
+                await setExistingReview(json); // Add await here
+                setComments(json.comments);
+                setrating(json.rating);
+                showAlert("true", "Review added");
+                handleclose();
+            } catch (error) {
+                showAlert("false", "Review not added");
+            }
+        }
+    }
+
 return (
     <>
-        <div className="review-wapper" style={reviewapper} onClick={(e)=>{
-            e.preventDefault()
-            handleclose()}}></div>
+        <div className="review-wapper" style={reviewwapper} onClick={handleclose}></div>
         <div className="review-box" style={reviebox}>
             <div className="head"><i class="fa-solid fa-xmark" onClick={handleclose}></i></div>
             <p>Give feedback to us</p>

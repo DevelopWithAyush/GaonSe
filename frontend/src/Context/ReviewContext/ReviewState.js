@@ -75,25 +75,28 @@ const ReviewState = (props) => {
     const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjViNDRkYTU2MGYwOTMzYjc5NzQzNDMwIn0sImlhdCI6MTcwNjcwNDE3NX0.kKMIQXSJsslL1L7LVndXkD7ywNL5ilCOQKbN9fs3ABY"
 
 
-    const fetchExistingReview = async (productId) => {
-        try {
-            const response = await fetch(`${url}api/review/user-review/${productId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authToken': authToken
-                },
-            })
-            const json = await response.json()
-            setExistingReview(json);
-            setrating(json.rating)
-            setComments(json.comments)
+    // const fetchExistingReview = async (productId) => {
+    //     try {
+    //         const response = await fetch(`${url}api/review/user-review/${productId}`, {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'authToken': authToken
+    //             },
+    //         })
+    //         const json = await response.json()
+    //         setExistingReview(json);
+    //         setrating(json.rating)
+    //         setComments(json.comments)
+       
 
-        } catch (error) {
-            console.log("some internal server error")
-            setExistingReview(null);
-        }
-    }
+    //     } catch (error) {
+    //         console.log("some internal server error")
+    //         setExistingReview(null);
+    //         setComments("")
+    //         setrating(0)
+    //     }
+    // }
 
 
     const startfunction =()=>{
@@ -162,7 +165,7 @@ const ReviewState = (props) => {
     }
 
   return (
-    <ReviewContext.Provider value={{fetchExistingReview,addAndUpdate,startfunction,startclick1,startclick2,startclick3,startclick4,startclick5,start1,start2,start3,start4,start5,reviebox,reviewapper,setreviebox,setreviewapper,setComments,handleclose,comments}}>
+    <ReviewContext.Provider value={{setExistingReview,setrating,addAndUpdate,startfunction,startclick1,startclick2,startclick3,startclick4,startclick5,start1,start2,start3,start4,start5,reviebox,reviewapper,setreviebox,setreviewapper,setComments,handleclose,comments}}>
         {props.children}
     </ReviewContext.Provider>
       
