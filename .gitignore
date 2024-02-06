@@ -23,3 +23,27 @@
 /frontendnpm-debug.log*
 /frontendyarn-debug.log*
 /frontendyarn-error.log*
+
+
+# this is for admin pannel
+# dependencies
+/adminpannel/node_modules
+/adminpannel/.pnp
+/adminpannel.pnp.js
+
+# testing
+/adminpannel/coverage
+
+# production
+/adminpannel/build
+
+# misc
+/adminpannel.DS_Store
+/adminpannel.env.local
+/adminpannel.env.development.local
+/adminpannel.env.test.local
+/adminpannel.env.production.local
+
+/adminpannel npm-debug.log*
+/adminpannel yarn-debug.log*
+/adminpannel yarn-error.log*

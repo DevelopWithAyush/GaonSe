@@ -146,7 +146,7 @@ const SIngleProduct = () => {
             }}>don't forget to give feedback to us😄</button>
                 </div>
             </div>
-            <ReviewModal rating={rating} setrating={setrating} reviebox ={reviebox} setreviebox ={setreviebox} reviewwapper = {reviewapper} setreviewapper ={setreviewapper}  productId={productId} start1 = {start1} start2= {start2} start3= {start3} start4= {start4} start5= {start5} startclick1 ={startclick1} startclick2 ={startclick2} startclick3 ={startclick3} startclick4 ={startclick4} startclick5 ={startclick5}/>
+            <ReviewModal rating={rating} setrating={setrating} reviebox ={reviebox} setreviebox ={setreviebox} reviewwapper = {reviewapper} setreviewapper ={setreviewapper}  productId={productId} start1 = {start1} start2= {start2} start3= {start3} start4= {start4} start5= {start5} startclick1 ={startclick1} startclick2 ={startclick2} startclick3 ={startclick3} startclick4 ={startclick4} startclick5 ={startclick5}/> 
 
         </section>
     )

@@ -1,0 +1,66 @@
+.header{
+    width: 25rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(238, 238, 238);
+    padding: 2rem 4%;
+}
+
+.header img{
+    height: 10%;
+}
+.header .navbar{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    font-size: 1.5rem;
+}
+
+.navlink{
+    font-weight: 500;
+color: gray;
+    font-size: 2rem;
+
+    
+}
+.navlink::before{
+    content: " ";
+    position: relative;
+    display: block;
+    top: 2.5rem;
+    width: 100%;
+    height: .2rem;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: 0.3s ease;
+}
+
+.navlink:hover::before {
+    transform: scaleX(1);
+}
+.navlink:hover {
+    transform: translateY(-1px);
+    color: black;
+}
+
+
+.active::before {
+    transform: scaleX(1);
+}
+
+.active {
+    color: black;
+    transform: translateY(-1px);
+}
