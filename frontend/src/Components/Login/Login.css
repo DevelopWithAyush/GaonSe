@@ -1,0 +1,62 @@
+.logincontainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+.logincontainer img{
+    width:10rem;
+}
+
+.login-box{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2.5rem;
+    gap: 2rem;
+}
+.login-box label{
+    font-weight: 600;
+    color: #794024;
+}
+.logincontainer-btn{
+    padding: 2rem 2rem;
+    background: black;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* styles.css */
+.otp-input {
+    /* Your custom styles go here */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style individual input boxes */
+.otp-input input {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #acacac;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Style focused input box */
+.otp-input input:focus {
+    border-color: black; /* Example color */
+}
+

@@ -53,7 +53,7 @@ router.put('/products/:productId', async (req, res) => {
       }
   
       // Check if at least one field is provided for update
-      if (!productName && !mrp && !discountPrice && !productDescription && !stocks && !category && !imgUrls && !featureImg) {
+      if (!productName && !mrp && !discountPrice && !productDescription && !stocks && !category && !imgUrls) {
         return res.status(400).json({ success: false, message: 'At least one field is required for update' });
       }
   
@@ -68,8 +68,7 @@ router.put('/products/:productId', async (req, res) => {
             productDescription,
             stocks,
             category,
-            imgUrls,
-            featureImg
+            imgUrls
           },
         },
         { new: true } // Return the updated document

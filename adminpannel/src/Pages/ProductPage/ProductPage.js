@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import "./ProductPage.css"
 import ProductCard from '../../Components/ProductCard/ProductCard'
 import { ProductContext } from '../../Context/ProductContext/ProductState'
+import { Link } from 'react-router-dom'
 const ProductPage = () => {
     const productcontext = useContext(ProductContext)
     const { product, getProducts } = productcontext
@@ -19,6 +20,8 @@ const ProductPage = () => {
 
                 })}
             </div>
+
+            <Link to="/addproduct" className='product-add'>add product</Link>
         </section>
     )
 }

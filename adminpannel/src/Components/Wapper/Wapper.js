@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
 import "./Wapper.css"
-import { ProductContext } from '../../Context/ProductContext/ProductState'
+import { ModalContext } from '../../Context/ModalContext/ModalContext'
 const Wapper = () => {
-    const productcontext = useContext(ProductContext)
-    const {wapper,closeWapper} = productcontext
+    const modalcontext = useContext(ModalContext)
+    const {wapper,closeWapper,closedeleteModal,closeeditModal} = modalcontext
   return (
     
-    <div className='full-wapper' onClick={()=>{closeWapper()}} style={wapper}></div>
+    <div className='full-wapper' onClick={()=>{closeWapper();
+    closedeleteModal()
+    closeeditModal()
+    }} style={wapper}></div>
   )
 }
 

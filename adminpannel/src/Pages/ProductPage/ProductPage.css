@@ -1,10 +1,11 @@
 .product{
-position: absolute;
-left: 25rem;
+position: relative;
+left: 14vw;
 /* background-color: yellow; */
-    width: 100vw;
+    width: 86vw;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 3rem;
     padding: 4rem 4%;
 }
@@ -12,7 +13,23 @@ left: 25rem;
 .product-item{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 align-items: center;
 gap: 3rem;
 
+}
+
+.product-add{
+    padding: 2rem 3rem ;
+    background-color: white;
+    border: .2rem solid black;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    color: black;
+    transition: .2s ease-in;
+}
+.product-add:hover{
+    background-color: black;
+    color: white;
 }
