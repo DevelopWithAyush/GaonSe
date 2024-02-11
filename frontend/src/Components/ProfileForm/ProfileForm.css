@@ -1,0 +1,46 @@
+.profile-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* align-items: flex-start; */
+    gap: 2rem;
+}
+.profile-form .row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+.profile-form .input{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.profile-form .input label{
+    padding: 0rem 1rem;
+    font-size: 1.5rem;
+font-weight: 500;    
+}
+.profile-form .input input{
+    padding: 1.5rem;
+    border: .1rem solid gray;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+.profile-form-btn{
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: transparent;
+    border: .2rem solid black;
+    border-radius: 1rem;
+    transition: .2s ease-in;
+    margin-top: 4rem;
+}
+.profile-form-btn:hover{
+    background-color: black;
+    color: white;
+}

@@ -12,7 +12,7 @@ const BlogCard = () => {
         <p className="blog-card-date">12/12/12</p>
         <p className="blog-card-heading">hey this is blog</p>
         <p className="blog-card-context">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis ab soluta vel incidunt perspiciatis laudantium architecto exercitationem suscipit odit,</p>
-        <Link className="blog-card-btn">read more <i class="fa-solid fa-arrow-right"></i></Link>
+        <Link className="blog-card-btn">read more <i className="fa-solid fa-arrow-right"></i></Link>
       </div>
     </div>
   )

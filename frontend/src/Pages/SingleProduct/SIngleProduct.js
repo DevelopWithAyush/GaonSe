@@ -4,12 +4,15 @@ import ImgCard from '../../Components/ImgCard/ImgCard'
 import "./SingleProduct.css"
 import { ProductContext } from '../../Context/ProductContext/ProductState'
 import ReviewModal from '../../Components/ReviewModal/ReviewModal'
+import { CartContext } from '../../Context/CartContext/CartContext'
 
 const SIngleProduct = () => {
     const {productId} = useParams()
     const [rating ,setrating] = useState(0)
-   const context = useContext(ProductContext)
-    const {getsingleproduct,singleproduct} = context
+   const productcontext = useContext(ProductContext)
+    const {getsingleproduct,singleproduct} = productcontext
+    const cartcontext = useContext(CartContext)
+    const {addToCart,getCart} =cartcontext
     useEffect(()=>{
         getsingleproduct(productId)
 
@@ -91,6 +94,10 @@ const SIngleProduct = () => {
         }
     }
 
+    const handleaddtobag =()=>{
+        addToCart(productId,1)
+        getCart()
+    }
 
 
     return (
@@ -110,7 +117,7 @@ const SIngleProduct = () => {
 
                     </div>
                     <div className="single-btn">
-                        <button> At to bag <i class="fa-solid fa-bag-shopping"></i></button>
+                        <button onClick={handleaddtobag}> At to bag <i class="fa-solid fa-bag-shopping"></i></button>
                         <button> buy now</button>
                     </div>
                     <div className="single-services">

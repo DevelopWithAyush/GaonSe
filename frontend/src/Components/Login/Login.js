@@ -9,14 +9,13 @@ import "./Login.css"
 import { AlertContext } from '../../Context/AlertContext/AlertState';
 
 const Login = (props) => {
-    const {handleonclose} = props;
+    const { handleonclose } = props;
     const alercontext = useContext(AlertContext)
-    const {showAlert} = alercontext;
+    const { showAlert } = alercontext;
     const [otp, setOtp] = useState("");
     const [showotp, setShowotp] = useState(false);
     const [ph, setPh] = useState("");
     const [loader, setLoader] = useState(false);
-    const [uid,setUid] = useState("")
 
     const url = "http://localhost:5000/"
 
@@ -25,28 +24,24 @@ const Login = (props) => {
         initializeRecaptcha();
     }, []);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async () => {
         try {
-            const response = await fetch(`${url}api/auth/login`, {
+          const response =   await fetch(`${url}api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({mobilenumber:ph, uid:uid})
+                body: JSON.stringify({ph})
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to add user');
-            }
+            const json = await response.json()
             handleonclose()
-            showAlert("true","login successfully")
+            showAlert("true", "login successfully")
+            localStorage.setItem("authToken",json.authToken)
             setOtp("")
-            // Handle success response if needed
         } catch (error) {
-            console.error('Error adding user:', error.message);
-            showAlert("fail","some issues")
+            showAlert("fail",error.message)
             handleonclose()
-            // Handle error if needed
         }
     };
 
@@ -74,39 +69,35 @@ const Login = (props) => {
 
         const formatPh = "+" + ph;
         const appVerifier = window.recaptchaVerifier;
-
-        signInWithPhoneNumber(auth, formatPh, appVerifier)
-            .then((confirmationResult) => {
-                window.confirmationResult = confirmationResult;
-                setLoader(false);
-                setShowotp(true);
-                showAlert("true","Otp send successfully")
-            })
-            .catch((error) => {
-                showAlert("false",error.message)
-                console.error("Error sending OTP:", error);
-                setLoader(false);
-            });
-        };
         
-        const onOTPVerify = (e) => {
-            e.preventDefault()
-            setLoader(true);
-            window.confirmationResult
-            .confirm(otp)
+        signInWithPhoneNumber(auth, formatPh, appVerifier)
+        .then((confirmationResult) => {
+            window.confirmationResult = confirmationResult;
+            setLoader(false);
+            setShowotp(true);
+            showAlert("true", "Otp send successfully")
+        })
+        .catch((error) => {
+            showAlert("false", error.message)
+            console.error("Error sending OTP:", error);
+            setLoader(false);
+            });
+    };
+
+    const onOTPVerify = (e) => {
+        e.preventDefault()
+        setLoader(true);
+        window.confirmationResult
+        .confirm(otp)
             .then((res) => {
                 setLoader(false);
                 setShowotp(false)
                 handleSubmit()
-                setUid(res.user.uid)
                 setOtp("")
-                console.log(res);
             })
             .catch((err) => {
-                console.error("Error verifying OTP:", err);
-                console.log(err)
                 setLoader(false);
-                showAlert("false",err.message)
+                showAlert("false", err.message)
             });
     };
 
@@ -119,18 +110,19 @@ const Login = (props) => {
                     <>
                         <label htmlFor="otp">Enter your OTP</label>
                         <OtpInput
-                value={otp}
-                onChange={setOtp}
-                OTPLength={6}
-                otpType="number"
-                disabled={false}
-                autoFocus
-                className="otp-input"
-            />
+                            value={otp}
+                            onChange={setOtp}
+                            OTPLength={6}
+                            otpType="number"
+                            disabled={false}
+                            autoFocus
+                            className="otp-input"
+                        />
                         <button onClick={onOTPVerify} className='logincontainer-btn'>
                             {loader && <Spinner />}
                             <span>Verify your OTP</span>
                         </button>
+                        <p onClick={onSignup}> resend the otp</p>
                     </>
                 ) : (
                     <>
@@ -141,21 +133,21 @@ const Login = (props) => {
                             onChange={setPh}
                             className="phone"
                             inputStyle={{
-                                width:"100%",
+                                width: "100%",
                                 height: '55px',
                                 fontSize: '1.5rem',
                                 padding: ' 0rem 5rem',
                                 borderRadius: '4px',
                                 border: '2px solid black',
                                 boxSizing: 'border-box',
-                                fontWeight :"500",
+                                fontWeight: "500",
                                 color: "#794024",
-                                
+
                             }}
                             containerStyle={{
                                 color: "#794024",
                                 width: '80%',
-                                display : "flex",
+                                display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
                                 marginBottom: '16px',
@@ -168,10 +160,10 @@ const Login = (props) => {
                                 cursor: 'pointer',
                                 position: "absolute",
                                 left: "0",
-                                top:"0",
+                                top: "0",
 
                             }}
-                             />
+                        />
 
                         <button className='logincontainer-btn' onClick={onSignup}>
                             {loader && <Spinner />}

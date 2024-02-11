@@ -15,31 +15,43 @@ import About from './Pages/About/About';
 import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions';
 import ReturnPolicy from './Pages/ReturnPolicy/ReturnPolicy';
 import ReviewState from './Context/ReviewContext/ReviewState';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import ProfileState from './Context/ProfileContext/ProfileContext';
+import CheakOut from './Pages/CheakOut/CheakOut';
+import CartState from './Context/CartContext/CartContext';
+import CheckoutState from './Context/CheckoutContext/CheackoutContext';
 function App() {
   return (
     <div className='app'>
       <BrowserRouter>
-      <AlertState>
-      <ProductState>
-        <ReviewState>
-        <Navbar />
-        <Alert/>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/product' element={<Product />} />
-          <Route path='/singleproduct/:productId' element={<SIngleProduct />} />
-          <Route path='/contact' element={<Contact />}/>
-          <Route path='/privacy-policy' element={<PrivacyPolicy />}/>
-          <Route path='/about' element={<About />}/>
-          <Route path='/termsandcondition' element={<TermsAndConditions />}/>
-          <Route path='/returnpolicy' element={<ReturnPolicy />}/>
-
-          <Route path='*' element={<PageNotFound />} />
-
-        </Routes>
-        <Footer />
-        </ReviewState>
-        </ProductState>
+        <AlertState>
+          <ProductState>
+            <CartState>
+              <ReviewState>
+                <ProfileState>
+                  <CheckoutState>
+                    <Navbar />
+                    <Alert />
+                    <Routes>
+                      <Route path='/' element={<Home />} />
+                      <Route path='/product' element={<Product />} />
+                      <Route path='/singleproduct/:productId' element={<SIngleProduct />} />
+                      <Route path='/contact' element={<Contact />} />
+                      <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+                      <Route path='/about' element={<About />} />
+                      <Route path='/termsandcondition' element={<TermsAndConditions />} />
+                      <Route path='/returnpolicy' element={<ReturnPolicy />} />
+                      <Route path='/returnpolicy' element={<ReturnPolicy />} />
+                      <Route path='/profile' element={<ProfilePage />} />
+                      <Route path='/cheakout' element={<CheakOut />} />
+                      <Route path='*' element={<PageNotFound />} />
+                    </Routes>
+                    <Footer />
+                  </CheckoutState>
+                </ProfileState>
+              </ReviewState>
+            </CartState>
+          </ProductState>
         </AlertState>
       </BrowserRouter>
     </div>

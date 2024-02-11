@@ -1,0 +1,80 @@
+.cheakout{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 10rem;
+    padding: 4rem 0%;
+    
+}
+.cheakout h1{
+    font-size: 4rem;
+}
+.cheakout-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.profile-card{
+    width: 60%;
+    display: flex;
+    flex-direction: column ;
+    align-items: flex-start;
+    gap: 5rem;
+    padding: 3rem 4%;
+}
+.profile-card p{
+    font-size: 3rem;
+    font-weight: 600;
+}
+.cheackout-calculation{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 4% 0rem 0rem;
+    
+    gap: 5rem;
+}
+.cheackout-calculation .headName{
+    font-size: 3rem;
+    font-weight: 600;
+}
+.cheackout-cart{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+}
+
+
+.cheackoutpice{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 2rem;
+    font-size: 1.7rem;
+    border-bottom: .1rem solid gray;
+    font-weight: 500;
+}
+.checkoutbtn{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.checkoutbtn button{
+    padding:2rem 3rem ;
+    background-color: transparent;
+    border: .2rem solid black;
+    border-radius: 1rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+
+}

@@ -40,8 +40,8 @@ const Category = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="categorybox">
 
-{category.map((cat)=>{
-  return       <SwiperSlide className='categorycard'>  <Link  to = "/product">
+{category.map((cat,index)=>{
+  return       <SwiperSlide className='categorycard' key={index}>  <Link  to = "/product">
   <img className='categoryimg' src={img} alt="" />
   <div className='linkbox'><p className='catlink'>{cat.category}</p></div> </Link>
 </SwiperSlide>

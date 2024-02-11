@@ -1,4 +1,4 @@
-import { createContext,useContext,useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { AlertContext } from "../AlertContext/AlertState";
 
 export const ReviewContext = createContext()
@@ -19,8 +19,8 @@ const ReviewState = (props) => {
     const [existingReview, setExistingReview] = useState(null);
     const [comments, setComments] = useState('');
 
-    const [reviewapper ,setreviewapper] = useState({top:"-100%"})
-    const [reviebox ,setreviebox] = useState({top:"-100%"})
+    const [reviewapper, setreviewapper] = useState({ top: "-100%" })
+    const [reviebox, setreviebox] = useState({ top: "-100%" })
     const handleclose = () => {
         setreviewapper({ top: "-100%" })
         setreviebox({ top: "-100%" })
@@ -71,105 +71,87 @@ const ReviewState = (props) => {
 
     }
 
-  
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjViNDRkYTU2MGYwOTMzYjc5NzQzNDMwIn0sImlhdCI6MTcwNjcwNDE3NX0.kKMIQXSJsslL1L7LVndXkD7ywNL5ilCOQKbN9fs3ABY"
+
+    const authToken = localStorage.getItem("authToken")
 
 
-    // const fetchExistingReview = async (productId) => {
-    //     try {
-    //         const response = await fetch(`${url}api/review/user-review/${productId}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'authToken': authToken
-    //             },
-    //         })
-    //         const json = await response.json()
-    //         setExistingReview(json);
-    //         setrating(json.rating)
-    //         setComments(json.comments)
-       
-
-    //     } catch (error) {
-    //         console.log("some internal server error")
-    //         setExistingReview(null);
-    //         setComments("")
-    //         setrating(0)
-    //     }
-    // }
-
-
-    const startfunction =()=>{
-        if(rating ===1){
+    const startfunction = () => {
+        if (rating === 1) {
             startclick1()
-        }else if(rating === 2){
+        } else if (rating === 2) {
             startclick2()
-        }else if(rating === 3){
+        } else if (rating === 3) {
             startclick3()
-        }else if(rating ===4){
+        } else if (rating === 4) {
             startclick4()
-        }else if(rating ===5){
+        } else if (rating === 5) {
             startclick5()
         }
     }
-    
-  
 
-    const addAndUpdate = async(productId)=>{
-        if (existingReview) {
-            try {
-                const response = await fetch(`${url}api/review/update-review/${productId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'authToken': authToken
-                    },
-                    body: JSON.stringify({
-                        rating,
-                        comments
-                    })
-                });
-                const json = await response.json();
-                setExistingReview(json);
-                setrating(json.rating);
-                setComments(json.comments);
-                showAlert("true", "Review updated");
-                handleclose();
-            } catch (error) {
-                showAlert("false", "Review not updated");
-            }
+
+
+    const addAndUpdate = async (productId) => {
+        const token = localStorage.getItem("authToken")
+        if (!token) {
+            showAlert("false", "session expired")
         } else {
-            try {
-                const response = await fetch(`${url}api/review/add-review`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'authToken': authToken
-                    },
-                    body: JSON.stringify({
-                        product: productId,
-                        rating,
-                        comments
-                    })
-                });
-                const json = await response.json();
-                await setExistingReview(json); // Add await here
-                setComments(json.comments);
-                setrating(json.rating);
-                showAlert("true", "Review added");
-                handleclose();
-            } catch (error) {
-                showAlert("false", "Review not added");
+
+            if (existingReview) {
+                try {
+                    const response = await fetch(`${url}api/review/update-review/${productId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'authToken': authToken
+                        },
+                        body: JSON.stringify({
+                            rating,
+                            comments
+                        })
+                    });
+                    const json = await response.json();
+                    setExistingReview(json);
+                    setrating(json.rating);
+                    setComments(json.comments);
+                    showAlert("true", "Review updated");
+                    handleclose();
+                } catch (error) {
+                    showAlert("false", "Review not updated");
+                }
+            } else {
+                try {
+                    const response = await fetch(`${url}api/review/add-review`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'authToken': authToken
+                        },
+                        body: JSON.stringify({
+                            product: productId,
+                            rating,
+                            comments
+                        })
+                    });
+                    const json = await response.json();
+                    await setExistingReview(json); // Add await here
+                    setComments(json.comments);
+                    setrating(json.rating);
+                    showAlert("true", "Review added");
+                    handleclose();
+                } catch (error) {
+                    showAlert("false", "Review not added");
+                }
             }
         }
     }
 
-  return (
-    <ReviewContext.Provider value={{setExistingReview,setrating,addAndUpdate,startfunction,startclick1,startclick2,startclick3,startclick4,startclick5,start1,start2,start3,start4,start5,reviebox,reviewapper,setreviebox,setreviewapper,setComments,handleclose,comments}}>
-        {props.children}
-    </ReviewContext.Provider>
-      
-  )
+    return (
+        <ReviewContext.Provider value={{ setExistingReview, setrating, addAndUpdate, startfunction, startclick1, startclick2, startclick3, startclick4, startclick5, start1, start2, start3, start4, start5, reviebox, reviewapper, setreviebox, setreviewapper, setComments, handleclose, comments }}>
+            {props.children}
+        </ReviewContext.Provider>
+
+    )
 }
 
 export default ReviewState

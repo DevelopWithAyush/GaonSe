@@ -7,6 +7,7 @@ const fetchuser = require('../Middleware/fetchuser')
 router.get('/user-review/:productId',fetchuser, async (req, res) => {
     try {
       const loggedInUserId = req.user.id;
+      console.log(loggedInUserId)
       const productId = req.params.productId;
       // const {productId} = req.body
   

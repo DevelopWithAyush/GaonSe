@@ -17,7 +17,7 @@ const ReviewModal = ({ productId, reviebox, setreviebox, reviewwapper, setreview
         setreviewapper({ top: "-100%" })
         setreviebox({ top: "-100%" })
     }
-        const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjViNDRkYTU2MGYwOTMzYjc5NzQzNDMwIn0sImlhdCI6MTcwNjcwNDE3NX0.kKMIQXSJsslL1L7LVndXkD7ywNL5ilCOQKbN9fs3ABY"
+        const authToken = localStorage.getItem("authToken")
 
     // here we start the api fetaching for review 
 
@@ -108,14 +108,14 @@ return (
     <>
         <div className="review-wapper" style={reviewwapper} onClick={handleclose}></div>
         <div className="review-box" style={reviebox}>
-            <div className="head"><i class="fa-solid fa-xmark" onClick={handleclose}></i></div>
+            <div className="head"><i className="fa-solid fa-xmark" onClick={handleclose}></i></div>
             <p>Give feedback to us</p>
             <div className="star-box">
-                <i class="fa-solid fa-star" onClick={startclick1} style={start1}></i>
-                <i class="fa-solid fa-star" onClick={startclick2} style={start2}></i>
-                <i class="fa-solid fa-star" onClick={startclick3} style={start3}></i>
-                <i class="fa-solid fa-star" onClick={startclick4} style={start4}></i>
-                <i class="fa-solid fa-star" onClick={startclick5} style={start5}></i>
+                <i className="fa-solid fa-star" onClick={startclick1} style={start1}></i>
+                <i className="fa-solid fa-star" onClick={startclick2} style={start2}></i>
+                <i className="fa-solid fa-star" onClick={startclick3} style={start3}></i>
+                <i className="fa-solid fa-star" onClick={startclick4} style={start4}></i>
+                <i className="fa-solid fa-star" onClick={startclick5} style={start5}></i>
             </div>
             <form className="commetbox">
                 <textarea required name="comment" id="" cols="30" rows="10" placeholder='Please write your feedback here' onChange={(e) => { setComments(e.target.value) }} value={comments} ></textarea>

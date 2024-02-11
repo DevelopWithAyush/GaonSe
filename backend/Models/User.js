@@ -1,39 +1,32 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    Fullname: {
+    fullname: {
         type: String
     },
-    mobilenumber: {
+    ph: {
         type: String,
         unique: true,
-        required:true
+        required: true
     },
-    uid: {
-        type: String,
-        unique: true,
-        required:true
+    pincode: {
+        type: String
     },
-    addresses: [{
-        pincode: {
-            type: String
-        },
-        flatno: {
-            type: String
-        },
-        area: {
-            type: String
-        },
-        landmark: {
-            type: String
-        },
-        city: {
-            type: String
-        },
-        state: {
-            type: String
-        }
-    }],
+    flatno: {
+        type: String
+    },
+    area: {
+        type: String
+    },
+    landmark: {
+        type: String
+    },
+    city: {
+        type: String
+    },
+    state: {
+        type: String
+    }
 });
 
 const User = mongoose.model('User', userSchema);

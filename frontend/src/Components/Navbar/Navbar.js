@@ -4,11 +4,12 @@ import { Link, useLocation } from "react-router-dom"
 import logo from "../../Assets/logo.png"
 import CartCard from '../CartCard/CartCard'
 import Login from "../Login/Login"
-import { ProductContext } from '../../Context/ProductContext/ProductState'
+import { CartContext } from '../../Context/CartContext/CartContext'
 
 const Navbar = () => {
-  const context = useContext(ProductContext)
-  const { carts, disprice } = context
+  const cartcontext = useContext(CartContext)
+  const {carts,getCart} = cartcontext
+
   const location = useLocation()
   const [wapper, Setwapper] = useState({ top: "-100%" })
   const [signform, Setsignform] = useState({ top: "-100%" })
@@ -16,11 +17,11 @@ const Navbar = () => {
   const [secline1, Setsecline1] = useState({ transform: "rotate(0deg)" })
   const [secline2, Setsecline2] = useState({ transform: "rotate(0deg)" })
   const [menubar, setmenubar] = useState({ top: "-10000%" })
-  const [cart, setCart] = useState({ right: "-100%" })
+  const [cart, setCart] = useState({ top: "-100%" })
   const handleonclose = () => {
     Setwapper({ top: "-100%" })
     Setsignform({ top: "-100%" })
-    setCart({ right: "-100%" })
+    setCart({ top: "-100%" })
   }
   const handleonopen = () => {
     Setwapper({ top: "0%" })
@@ -60,8 +61,8 @@ const Navbar = () => {
         </nav>
       </div>
       <div className="right">
-        <button className='headbutton fa-regular fa-user' onClick={handleonopen} ></button>
-        <button className="fa-solid fa-bag-shopping headbutton" onClick={() => { setCart({ right: "0%" }); Setwapper({ top: "0%" }) }}></button>
+    <Link to={localStorage.getItem("authToken")?`/profile`:null}><button className='headbutton fa-regular fa-user' onClick={localStorage.getItem("authToken") ? null : handleonopen }></button> </Link>  
+        <button className="fa-solid fa-bag-shopping headbutton" onClick={() => { setCart({ top: "50%" }); Setwapper({ top: "0%" });getCart() }}></button>
       </div>
     </header>
     {/* header end here  */}
@@ -79,20 +80,22 @@ const Navbar = () => {
 
     <section className="cart-section " style={cart}>
       <div className="cart-head">
-        <p>Shopping cart</p>
-        <i class="fa-solid fa-xmark" onClick={handleonclose} ></i>
+        <i class="fa-solid fa-bag-shopping"></i>
+        <i className="fa-solid fa-xmark" onClick={handleonclose} ></i>
       </div>
       <div className="cart-card-section">
         {carts.map((carts) => {
-          return <CartCard carts={carts} />
+          return <CartCard carts={carts} cartsquantity={carts.quantity} />
 
         })}
+     
+      
 
 
       </div>
-      <button className="checkout">
-        <p>{disprice}</p>
-        proceed to checkout</button>
+      <Link to="/cheakout" onClick={handleonclose} className="checkout">
+        <p>{}</p>
+        proceed to checkout</Link>
     </section>
 
   </>
