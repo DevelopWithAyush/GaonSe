@@ -1,7 +1,6 @@
-.product{
-position: relative;
-left: 14vw;
-/* background-color: yellow; */
+.product {
+    position: relative;
+    left: 14vw;
     width: 86vw;
     display: flex;
     flex-direction: column;
@@ -9,18 +8,20 @@ left: 14vw;
     gap: 3rem;
     padding: 4rem 4%;
 }
-
-.product-item{
+.product h1{
+    font-size: 2rem;
+}
+.product-item {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-align-items: center;
-gap: 3rem;
+    align-items: center;
+    gap: 3rem;
 
 }
 
-.product-add{
-    padding: 2rem 3rem ;
+.product-add {
+    padding: 2rem 3rem;
     background-color: white;
     border: .2rem solid black;
     font-size: 1.5rem;
@@ -29,7 +30,8 @@ gap: 3rem;
     color: black;
     transition: .2s ease-in;
 }
-.product-add:hover{
+
+.product-add:hover {
     background-color: black;
     color: white;
 }

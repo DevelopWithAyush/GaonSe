@@ -9,7 +9,7 @@ const ProductCard = (props) => {
   const { openWapper, closeWapper, closedeleteModal, opendeleteModal, deleteModal } = modalcontext
 
   const productcontext = useContext(ProductContext)
-  const { deleteProduct,setDeleteProductId } = productcontext;
+  const { deleteProduct, setDeleteProductId } = productcontext;
 
 
 
@@ -31,8 +31,8 @@ const ProductCard = (props) => {
 
         </div>
         <div className="product-item-btn">
-          <i class="fa-solid fa-trash" onClick={() => { openWapper(); opendeleteModal();setDeleteProductId(product._id) }}></i>
-          <Link to= {`/editproduct/${product._id}`} ><i class="fa-solid fa-pen-to-square" ></i> </Link>
+          <i class="fa-solid fa-trash" onClick={() => { openWapper(); opendeleteModal(); setDeleteProductId(product._id) }}></i>
+          <Link to={`/editproduct/${product._id}`} ><i class="fa-solid fa-pen-to-square" ></i> </Link>
         </div>
       </div>
 

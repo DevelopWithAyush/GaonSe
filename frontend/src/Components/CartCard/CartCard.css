@@ -8,13 +8,15 @@
     background-color: rgb(241, 251, 255);
     padding: 0rem 3rem 0rem 0rem;
     border-radius: 1rem;
+    position: relative;
+    /* gap: 3rem; */
 }
 .cart-card-img{
     height: 100%;
     border-radius: 1rem 0rem 0rem 1rem;
 }
 .product-name{
-    width: 15rem;
+    width: 12rem;
 }
 .incdecbtn{
     display: flex;
@@ -48,6 +50,9 @@
     background-color: black;
     color: white;
 }
+.singleprice{
+    width: 10rem;
+}
 .incdecbtn :nth-child(3){
     border-radius:0rem 1rem 1rem 0rem ;
 
@@ -61,7 +66,13 @@
     font-size: 1.2rem;
     font-weight: 400;
 }
-
+.singleprice .single-offer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 1rem 0rem 0rem 0rem;
+    font-size: 1rem;
+}
 .incdecbtn :nth-child(1):hover{
     background-color: rgb(46, 46, 46);
 }
@@ -79,3 +90,24 @@
     color: rgb(0, 0, 0);
     transform: scale(1.2);
 }
+
+@media(max-width:1024px){
+    html{
+      font-size: 57.5%;
+  }
+  }
+  @media(max-width:768px){
+    .cart-card{
+        justify-content: space-between;
+    }
+  }
+  @media(max-width:425px){
+    html{
+      font-size: 45.5%;
+  }
+  }
+  @media(max-width:375px){
+    html{
+      font-size: 42.5%;
+  }
+  }

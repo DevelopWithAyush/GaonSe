@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import "./CheakOut.css"
 import CartCard from '../../Components/CartCard/CartCard'
 import { CartContext } from '../../Context/CartContext/CartContext'
@@ -31,7 +31,7 @@ const CheakOut = () => {
 
   return (
     <section className="cheakout">
-      <h1>cheackout</h1>
+      <h1>cheakout</h1>
 
       <div className="cheakout-container">
         <div className="profile-card">

@@ -85,13 +85,9 @@ const Navbar = () => {
       </div>
       <div className="cart-card-section">
         {carts.map((carts) => {
-          return <CartCard carts={carts} cartsquantity={carts.quantity} />
+          return <CartCard carts={carts} />
 
         })}
-     
-      
-
-
       </div>
       <Link to="/cheakout" onClick={handleonclose} className="checkout">
         <p>{}</p>

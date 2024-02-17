@@ -24,10 +24,10 @@ const ProfileForm = () => {
                 <label htmlFor="">FullName</label>
                 <input  required  type="text"  value={fullname} onChange={(e)=>{setfullname(e.target.value)}} />
             </div>
-            <div className="input">
+            {/* <div className="input">
                 <label htmlFor="">Mobile Number</label>
                 <input  required  type="ph"  value={fullname} onChange={(e)=>{setfullname(e.target.value)}} />
-            </div>
+            </div> */}
             </div>
         
         <div className="row">

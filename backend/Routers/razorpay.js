@@ -44,7 +44,6 @@ router.post("/checkout", fetchuser, async (req, res) => {
 })
 
 router.post("/paymentverification", async (req, res) => {
-  console.log("dubey")
 
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
@@ -77,7 +76,6 @@ router.post("/paymentverification", async (req, res) => {
     }
 
   } catch (error) {
-    console.log("ayush")
     await Order.findOneAndUpdate(
       { orderid: razorpay_order_id },
       { $set: { status: 'cancelled', paymentId: razorpay_payment_id } },

@@ -114,7 +114,8 @@ router.delete('/products/:productId', async (req, res) => {
       return res.status(500).json({ success: false, message: 'Internal server error' });
     }
   });
-// the code are start form all category and all things
+
+
 
 
 

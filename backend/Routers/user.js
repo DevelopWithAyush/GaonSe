@@ -20,7 +20,6 @@ router.post('/login', async (req, res) => {
         }
       }
       const authToken = jwt.sign(data, JWT_SECRET);
-      console.log(authToken)
   
       return res.status(200).json({success:"true",authToken});
     }
@@ -88,6 +87,16 @@ router.put('/users',fetchuser, async (req, res) => {
       res.status(500).json({ message: "Internal Server Error" });
   }
 });
+router.get('/allUsers', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 
 module.exports = router;

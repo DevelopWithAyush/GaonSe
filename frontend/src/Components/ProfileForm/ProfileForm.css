@@ -44,3 +44,31 @@ font-weight: 500;
     background-color: black;
     color: white;
 }
+
+
+
+@media(max-width:1024px){
+    .profile-form .row{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .profile-form .input{
+        width: 100%;
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size: 53.5%;
+  }
+  }
+  @media(max-width:425px){
+    html{
+      font-size: 45.5%;
+  }
+  }
+  @media(max-width:375px){
+    html{
+      font-size: 42.5%;
+  }
+  }

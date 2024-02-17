@@ -1,0 +1,22 @@
+.review-section {
+    position: relative;
+    left: 14vw;
+    width: 86vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 4rem 4%;
+}
+.review-section h1{
+    font-size: 2rem;
+}
+
+.review-box{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    gap: 3rem;
+}

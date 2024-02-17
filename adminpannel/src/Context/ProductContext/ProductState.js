@@ -46,8 +46,6 @@ const ProductState = (props) => {
             const json = await response.json()
             setProduct(json.products.reverse())
 
-
-
         } catch (error) {
             console.log("error ")
         }

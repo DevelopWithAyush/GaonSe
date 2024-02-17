@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {Link,useParams  } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ImgCard from '../../Components/ImgCard/ImgCard'
 import "./SingleProduct.css"
 import { ProductContext } from '../../Context/ProductContext/ProductState'
@@ -7,24 +7,30 @@ import ReviewModal from '../../Components/ReviewModal/ReviewModal'
 import { CartContext } from '../../Context/CartContext/CartContext'
 
 const SIngleProduct = () => {
-    const {productId} = useParams()
-    const [rating ,setrating] = useState(0)
-   const productcontext = useContext(ProductContext)
-    const {getsingleproduct,singleproduct} = productcontext
+    const { productId } = useParams()
+    const [rating, setrating] = useState(0)
+    const productcontext = useContext(ProductContext)
+    const { getsingleproduct, singleproduct } = productcontext
     const cartcontext = useContext(CartContext)
-    const {addToCart,getCart} =cartcontext
-    useEffect(()=>{
+    const { addToCart, getCart,carts } = cartcontext
+    
+function doesProductExist(productId) {
+    return carts.some(item => item.product && item.product._id === productId);
+} 
+    let productexists  = false;
+    productexists = doesProductExist(productId)
+    useEffect(() => {
         getsingleproduct(productId)
-
         // eslint-disable-next-line
-    },[])
-    
+    }, [])
+
+    console.log(productexists)
     // console.log(singleproduct)
-    const [accordion,setAccordion] = useState({display:"flex"})
-    const discountper = (((singleproduct.mrp -singleproduct.discountPrice)/singleproduct.mrp)*100).toFixed(1);
-    
-    const [reviewapper ,setreviewapper] = useState({top:"-100%"})
-    const [reviebox ,setreviebox] = useState({top:"-100%"})
+    const [accordion, setAccordion] = useState({ display: "flex" })
+    const discountper = (((singleproduct.mrp - singleproduct.discountPrice) / singleproduct.mrp) * 100).toFixed(1);
+
+    const [reviewapper, setreviewapper] = useState({ top: "-100%" })
+    const [reviebox, setreviebox] = useState({ top: "-100%" })
 
     // all the code related to the page review page 
     const [start1, setStar1] = useState({ color: "#e4e4e4 " })
@@ -80,31 +86,34 @@ const SIngleProduct = () => {
 
 
 
-    const startfunction =()=>{
-        if(rating ===1){
+    const startfunction = () => {
+        if (rating === 1) {
             startclick1()
-        }else if(rating === 2){
+        } else if (rating === 2) {
             startclick2()
-        }else if(rating === 3){
+        } else if (rating === 3) {
             startclick3()
-        }else if(rating ===4){
+        } else if (rating === 4) {
             startclick4()
-        }else if(rating ===5){
+        } else if (rating === 5) {
             startclick5()
         }
     }
 
-    const handleaddtobag =()=>{
-        addToCart(productId,1)
+    const handleaddtobag = () => {
+        addToCart(productId, 1)
         getCart()
     }
 
+    const handleopencart =()=>{
+        
+    }
 
     return (
         <section className='single-product'>
-            <p className="single-navigation navigation-link"><Link to="/"  className='navigation-link' >home</Link>/ <Link to="/product" className='navigation-link' >product</Link>/ <Link  className='navigation-link' to={`/singleproduct/${singleproduct._id}`}> {singleproduct.productName} </Link> </p>
+            <p className="single-navigation navigation-link"><Link to="/" className='navigation-link' >home</Link>/ <Link to="/product" className='navigation-link' >product</Link>/ <Link className='navigation-link' to={`/singleproduct/${singleproduct._id}`}> {singleproduct.productName} </Link> </p>
             <div className="product-detials">
-             
+
                 <div className="img-section">
                     <ImgCard></ImgCard>
                 </div>
@@ -117,8 +126,10 @@ const SIngleProduct = () => {
 
                     </div>
                     <div className="single-btn">
-                        <button onClick={handleaddtobag}> At to bag <i class="fa-solid fa-bag-shopping"></i></button>
-                        <button> buy now</button>
+                    <button  onClick={() => {productexists===true ? handleopencart():handleaddtobag()  }}>
+  {productexists ? "go to bag" : "add to bag"} 
+  <i className="fa-solid fa-bag-shopping"></i>
+</button>                        <button> buy now</button>
                     </div>
                     <div className="single-services">
                         <div className="service-card">
@@ -135,10 +146,10 @@ const SIngleProduct = () => {
                                 <p>pay online securly</p>
                             </div>
                         </div>
-                     
+
                     </div>
                     <div className="product-accordion">
-                        <div className="accordion-head" onClick={()=>{accordion.display === "none"?setAccordion({display:"flex"}):setAccordion({display:"none"})}}>
+                        <div className="accordion-head" onClick={() => { accordion.display === "none" ? setAccordion({ display: "flex" }) : setAccordion({ display: "none" }) }}>
                             <p>product description</p>
                             <div className="accordion-btn">
                                 <span className='accordion-line1'></span>
@@ -147,13 +158,14 @@ const SIngleProduct = () => {
                         </div>
                         <p className='single-para' style={accordion}> {singleproduct.productDescription} </p>
                     </div>
-                <button onClick={()=>{setreviewapper({top:"0"})
-                                    setreviebox({top:"50%"})
-                                    startfunction()
-            }}>don't forget to give feedback to us😄</button>
+                    <button onClick={() => {
+                        setreviewapper({ top: "0" })
+                        setreviebox({ top: "50%" })
+                        startfunction()
+                    }}>don't forget to give feedback to us😄</button>
                 </div>
             </div>
-            <ReviewModal rating={rating} setrating={setrating} reviebox ={reviebox} setreviebox ={setreviebox} reviewwapper = {reviewapper} setreviewapper ={setreviewapper}  productId={productId} start1 = {start1} start2= {start2} start3= {start3} start4= {start4} start5= {start5} startclick1 ={startclick1} startclick2 ={startclick2} startclick3 ={startclick3} startclick4 ={startclick4} startclick5 ={startclick5}/> 
+            <ReviewModal rating={rating} setrating={setrating} reviebox={reviebox} setreviebox={setreviebox} reviewwapper={reviewapper} setreviewapper={setreviewapper} productId={productId} start1={start1} start2={start2} start3={start3} start4={start4} start5={start5} startclick1={startclick1} startclick2={startclick2} startclick3={startclick3} startclick4={startclick4} startclick5={startclick5} />
 
         </section>
     )

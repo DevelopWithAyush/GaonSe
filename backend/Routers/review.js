@@ -7,7 +7,6 @@ const fetchuser = require('../Middleware/fetchuser')
 router.get('/user-review/:productId',fetchuser, async (req, res) => {
     try {
       const loggedInUserId = req.user.id;
-      console.log(loggedInUserId)
       const productId = req.params.productId;
       // const {productId} = req.body
   
@@ -77,5 +76,37 @@ router.post('/add-review',fetchuser, async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+  // GET request handler to fetch all reviews
+router.get('/reviews', async (req, res) => {
+  try {
+    // Query the database for all reviews
+    const reviews = await Review.find().populate('reviewer','fullname');
+    // Send the reviews as a response
+    res.json(reviews);
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    // Send an error response
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.delete('/reviews/:id', async (req, res) => {
+  const reviewId = req.params.id;
+
+  try {
+    // Find the review by ID and delete it
+    const deletedReview = await Review.findByIdAndDelete(reviewId);
+    
+    if (!deletedReview) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
+    
+    res.json({sucess:"true", message: 'Review deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting review:', error);
+    res.status(500).json({success : "false", error: 'Internal server error' });
+  }
+});
   
 module.exports = router;

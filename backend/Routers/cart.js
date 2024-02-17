@@ -127,10 +127,10 @@ router.delete('/cart/:productId', fetchuser, async (req, res) => {
 
 
 // PUT route to update the quantity of a product in the cart
-router.put('/carts/:cartId/products/:productId', async (req, res) => {
+router.put('/updatecart',fetchuser, async (req, res) => {
   try {
-    const { cartId, productId } = req.params;
-    const { quantity } = req.body;
+    const { quantity,productId } = req.body;
+    const user = req.user.id
 
     // Validate that quantity is a positive integer
     if (!Number.isInteger(quantity) || quantity <= 0) {
@@ -139,8 +139,8 @@ router.put('/carts/:cartId/products/:productId', async (req, res) => {
 
     // Update the quantity of the product in the cart
     const updatedCart = await Cart.findOneAndUpdate(
-      { _id: cartId, 'products._id': productId },
-      { $set: { 'products.$.quantity': quantity } },
+      { user, "products.product" : productId },
+      { $set: { 'products.quantity': quantity } },
       { new: true }
     );
 
